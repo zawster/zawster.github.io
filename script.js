@@ -81,3 +81,32 @@ var tablinks = document.getElementsByClassName("tab-links")
     window.onclick = (e) => {
     if (e.target == modal) modal.style.display = 'none';
     }
+
+    // Project Dialog Handling
+    document.addEventListener('DOMContentLoaded', function() {
+        const workItems = document.querySelectorAll('.work');
+
+        workItems.forEach(work => {
+            const layer = work.querySelector('.layer');
+            const layerContent = work.querySelector('.layer-content');
+
+            if (!layer || !layerContent) return;
+
+            // Show dialog when hovering on project card
+            work.addEventListener('mouseenter', function() {
+                layer.classList.add('active');
+            });
+
+            // Hide dialog when mouse leaves the dialog content
+            layerContent.addEventListener('mouseleave', function() {
+                layer.classList.remove('active');
+            });
+
+            // Also hide when clicking outside (on the backdrop)
+            layer.addEventListener('click', function(e) {
+                if (e.target === layer) {
+                    layer.classList.remove('active');
+                }
+            });
+        });
+    });
