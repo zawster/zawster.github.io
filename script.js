@@ -109,11 +109,15 @@ var tablinks = document.getElementsByClassName("tab-links")
                 layer.classList.remove('active');
             });
 
-            // Also hide when clicking outside (on the backdrop)
-            layer.addEventListener('click', function(e) {
-                if (e.target === layer) {
-                    layer.classList.remove('active');
-                }
-            });
+        });
+
+        // Close any open popup when clicking outside of layer-content
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.layer-content')) {
+                workItems.forEach(w => {
+                    const l = w.querySelector('.layer');
+                    if (l) l.classList.remove('active');
+                });
+            }
         });
     });
