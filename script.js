@@ -94,6 +94,13 @@ var tablinks = document.getElementsByClassName("tab-links")
 
             // Show dialog when hovering on project card
             work.addEventListener('mouseenter', function() {
+                // Close all other open popups first
+                workItems.forEach(otherWork => {
+                    if (otherWork !== work) {
+                        const otherLayer = otherWork.querySelector('.layer');
+                        if (otherLayer) otherLayer.classList.remove('active');
+                    }
+                });
                 layer.classList.add('active');
             });
 
