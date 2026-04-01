@@ -1,3 +1,27 @@
+// Defer heavy background image — render page first, then load 2.1 MB PNG
+(function() {
+    var header = document.getElementById('header');
+    var bg = new Image();
+    bg.onload = function() { header.classList.add('bg-loaded'); };
+    bg.src = 'images/background-1.png';
+})();
+
+// Fade-in project images when they load (runs before DOM is fully ready, so we use DOMContentLoaded)
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.work img').forEach(function(img) {
+        function markLoaded() {
+            img.classList.add('img-loaded');
+            img.closest('.work').classList.add('img-ready');
+        }
+        if (img.complete && img.naturalWidth > 0) {
+            markLoaded();
+        } else {
+            img.addEventListener('load', markLoaded);
+            img.addEventListener('error', markLoaded);
+        }
+    });
+});
+
 var tablinks = document.getElementsByClassName("tab-links")
     var tabcontents = document.getElementsByClassName("tab-contents")
 
