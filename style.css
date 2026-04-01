@@ -22,10 +22,14 @@ body {
 
     width: 100%;
     height: 100vh;
-    /* background-image: url(images/pexels-d-ng-nhan-324384-1529881.jpg); */
-    background-image: url(images/background-1.png);
+    background: linear-gradient(160deg, #0d0d1f 0%, #1a0d2e 50%, #0d0d1f 100%);
     background-size:  cover;
     background-position: center;
+    transition: background-image 0.4s ease;
+}
+
+#header.bg-loaded {
+    background-image: url(images/background-1.png);
 }
 
 .container {
@@ -97,7 +101,9 @@ font-size: 30px;
 
 #about{
     padding: 80px 0;
-    color: #ababab
+    color: #ababab;
+    content-visibility: auto;
+    contain-intrinsic-size: 0 650px;
 }
 
 
@@ -176,6 +182,8 @@ border-radius: 15px;}
 
 #services {
     padding: 30px 0;
+    content-visibility: auto;
+    contain-intrinsic-size: 0 550px;
 }
 
 .services-list{
@@ -277,6 +285,8 @@ border-radius: 15px;}
 
 #portfolio {
     padding: 50px 0;
+    content-visibility: auto;
+    contain-intrinsic-size: 0 1200px;
 }
 
 .work-list{
@@ -306,14 +316,33 @@ border-radius: 15px;}
     position: relative;
     overflow: visible;
     cursor: pointer;
+    background: linear-gradient(90deg, #1a1a2e 25%, #252548 50%, #1a1a2e 75%);
+    background-size: 200% 100%;
+    animation: img-shimmer 1.5s ease-in-out infinite;
+}
+
+.work.img-ready {
+    animation: none;
+    background: transparent;
+}
+
+@keyframes img-shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
 }
 
 .work img{
     width: 100%;
-    height: 100%;
     border-radius: 10px;
     display: block;
-    transition: transform 0.3s, filter 0.3s;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.3s, filter 0.3s;
+}
+
+.work img.img-loaded {
+    opacity: 1;
 }
 
 .work:hover img{
@@ -419,6 +448,11 @@ border-radius: 15px;}
 }
 
 /*------------------------contact----------------------*/
+
+#contact {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 500px;
+}
 
 .contact-left{
     flex-basis: 35%;
