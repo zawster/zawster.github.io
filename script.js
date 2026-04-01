@@ -107,41 +107,36 @@ var tablinks = document.getElementsByClassName("tab-links")
     }
 
     // Project Dialog Handling
+    // A single overlay is appended to <body> (outside #portfolio) to avoid
+    // content-visibility:auto creating a paint-containment context that breaks
+    // position:fixed, which caused the modal to appear at random positions.
     document.addEventListener('DOMContentLoaded', function() {
         const workItems = document.querySelectorAll('.work');
 
+        const overlay = document.createElement('div');
+        overlay.className = 'layer';
+        const overlayInner = document.createElement('div');
+        overlayInner.className = 'layer-content';
+        overlay.appendChild(overlayInner);
+        document.body.appendChild(overlay);
+
         workItems.forEach(work => {
-            const layer = work.querySelector('.layer');
-            const layerContent = work.querySelector('.layer-content');
+            const src = work.querySelector('.layer-content');
+            if (!src) return;
 
-            if (!layer || !layerContent) return;
-
-            // Show dialog when hovering on project card
             work.addEventListener('mouseenter', function() {
-                // Close all other open popups first
-                workItems.forEach(otherWork => {
-                    if (otherWork !== work) {
-                        const otherLayer = otherWork.querySelector('.layer');
-                        if (otherLayer) otherLayer.classList.remove('active');
-                    }
-                });
-                layer.classList.add('active');
+                overlayInner.innerHTML = src.innerHTML;
+                overlay.classList.add('active');
             });
-
-            // Hide dialog when mouse leaves the dialog content
-            layerContent.addEventListener('mouseleave', function() {
-                layer.classList.remove('active');
-            });
-
         });
 
-        // Close any open popup when clicking outside of layer-content
+        overlayInner.addEventListener('mouseleave', function() {
+            overlay.classList.remove('active');
+        });
+
         document.addEventListener('click', function(e) {
             if (!e.target.closest('.layer-content')) {
-                workItems.forEach(w => {
-                    const l = w.querySelector('.layer');
-                    if (l) l.classList.remove('active');
-                });
+                overlay.classList.remove('active');
             }
         });
     });
