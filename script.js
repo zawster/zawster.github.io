@@ -128,10 +128,10 @@ var tablinks = document.getElementsByClassName("tab-links")
                 overlayInner.innerHTML = src.innerHTML;
                 overlay.classList.add('active');
             });
-        });
 
-        overlayInner.addEventListener('mouseleave', function() {
-            overlay.classList.remove('active');
+            work.addEventListener('mouseleave', function() {
+                overlay.classList.remove('active');
+            });
         });
 
         document.addEventListener('click', function(e) {
