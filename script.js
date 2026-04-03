@@ -122,16 +122,25 @@ var tablinks = document.getElementsByClassName("tab-links")
 
         workItems.forEach(work => {
             const src = work.querySelector('.layer-content');
+            const imgElement = work.querySelector('img');
             if (!src) return;
 
             work.addEventListener('mouseenter', function() {
                 overlayInner.innerHTML = src.innerHTML;
+
+                // Set background image from project card
+                if (imgElement) {
+                    overlayInner.style.backgroundImage = `url(${imgElement.src})`;
+                    overlayInner.style.backgroundSize = 'cover';
+                    overlayInner.style.backgroundPosition = 'center';
+                }
+
                 overlay.classList.add('active');
             });
+        });
 
-            work.addEventListener('mouseleave', function() {
-                overlay.classList.remove('active');
-            });
+        overlay.addEventListener('mouseleave', function() {
+            overlay.classList.remove('active');
         });
 
         document.addEventListener('click', function(e) {
