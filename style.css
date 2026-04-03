@@ -376,11 +376,13 @@ border-radius: 15px;}
 
 /* Dialog Box Content */
 .layer-content {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    background-color: rgba(26, 26, 26, 0.85);
+    background-blend-mode: multiply;
     border-radius: 15px;
     padding: 40px;
-    max-width: 600px;
-    max-height: 80vh;
+    padding-top: 85px;
+    max-width: 900px;
+    max-height: calc(100vh);
     overflow-y: auto;
     text-align: center;
     border: 2px solid #ff004f;
