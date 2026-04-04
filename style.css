@@ -178,61 +178,124 @@ border-radius: 15px;}
     display: block;
 }
 
-/*----------------Servies-------------*/
+/*----------------Services-------------*/
 
 #services {
-    padding: 30px 0;
+    padding: 60px 0;
     content-visibility: auto;
     contain-intrinsic-size: 0 550px;
+    background: linear-gradient(180deg, rgba(255, 0, 79, 0.03) 0%, transparent 100%);
 }
 
 .services-list{
     display: grid;
-    /* grid-template-columns: repeat(auto-fit,minmax(250px, 1fr)) ; */
-    grid-template-columns: repeat(3, 1fr) ;
-    grid-gap: 40px;
-    margin-top: 50px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 40px;
 }
-@media (max-width: 768px) {
+
+@media (max-width: 900px) {
     .services-list {
-        grid-template-columns: 1fr; /* Single column */
-        gap: 20px; /* Smaller gap for mobile */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .services-list {
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
 }
 
 .services-list div {
-    background: #262626;
-    padding: 40px;
-    font-size : 15px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border: 1px solid rgba(255, 0, 79, 0.2);
+    padding: 28px;
+    font-size: 14px;
     font-weight: 300;
-    border-radius: 10px;
-    transition: background 0.5s, transform 0.5s;
+    border-radius: 12px;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.services-list div::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 0, 79, 0.1), transparent);
+    transition: left 0.5s ease;
+    pointer-events: none;
+}
+
+.services-list div:hover::before {
+    left: 100%;
 }
 
 .services-list div i {
-    font-size : 60px;
-    margin-bottom: 30px;
+    font-size: 48px;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #ff004f, #ff6b9d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .services-list div h2 {
-    font-size : 40px;
-    font-weight: 500;
-    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #fff;
+    line-height: 1.3;
+}
+
+.services-list div p {
+    color: #b0b0b0;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: auto;
+    flex-grow: 1;
 }
 
 .services-list div a {
     text-decoration: none;
-    color: #fff;
+    color: #ff004f;
     font-size: 12px;
-    margin-top: 20px;
-    display: inline-block;
-    
+    margin-top: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
 }
 
-.services-list div:hover{
-    background: #ff004f;
-    transform: translateY(-10px);
+.services-list div a::after {
+    content: '→';
+    transition: transform 0.3s ease;
+}
 
+.services-list div:hover {
+    border-color: rgba(255, 0, 79, 0.5);
+    background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(255, 0, 79, 0.2);
+}
+
+.services-list div:hover a {
+    color: #ff6b9d;
+}
+
+.services-list div:hover a::after {
+    transform: translateX(4px);
 }
 
 /* .learn-more {
@@ -248,38 +311,151 @@ border-radius: 15px;}
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.7);
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
     z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .modal-content {
-    background: #262626;
-    margin: 10% auto;
-    padding: 30px;
-    width: 60%;
-    border-radius: 10px;
+    background: linear-gradient(135deg, #0f1419 0%, #151b27 50%, #0f1419 100%);
+    border: 1px solid rgba(255, 0, 79, 0.3);
+    box-shadow: 0 20px 60px rgba(255, 0, 79, 0.2), 0 0 40px rgba(255, 0, 79, 0.1);
+    margin: 5% auto;
+    padding: 40px;
+    width: 70%;
+    max-width: 900px;
+    max-height: 85vh;
+    border-radius: 16px;
     position: relative;
+    overflow-y: auto;
+    animation: slideIn 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 0, 79, 0.5), transparent);
+    pointer-events: none;
 }
 
 .close {
-    color: #fff;
+    color: #b0b0b0;
     position: absolute;
     right: 20px;
-    top: 10px;
-    font-size: 28px;
+    top: 20px;
+    font-size: 32px;
     cursor: pointer;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 0, 79, 0.1);
+    border: 1px solid rgba(255, 0, 79, 0.2);
+}
+
+.close:hover {
+    color: #ff004f;
+    background: rgba(255, 0, 79, 0.2);
+    border-color: rgba(255, 0, 79, 0.4);
+    transform: rotate(90deg);
 }
 
 #modalBulletPoints {
     color: #fff;
-    padding: 20px;
+}
+
+#modalBulletPoints h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ff004f, #ff6b9d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+#modalBulletPoints ul {
+    list-style: none;
+    margin-top: 30px;
 }
 
 #modalBulletPoints li {
-    margin: 15px 0;
-    font-size: 16px;
-    list-style-type: '• ';
-    /* list-style-type: '✅ '; */
+    margin: 18px 0;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #cbd5e1;
+    padding-left: 28px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+#modalBulletPoints li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(135deg, #ff004f, #ff6b9d);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 0, 79, 0.4);
+}
+
+#modalBulletPoints li:hover {
+    color: #fff;
+    padding-left: 32px;
+}
+
+#modalBulletPoints li:hover::before {
+    box-shadow: 0 0 15px rgba(255, 0, 79, 0.6);
+    transform: scale(1.2);
+}
+
+/* Scrollbar Styling */
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: rgba(255, 0, 79, 0.05);
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 0, 79, 0.3);
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 0, 79, 0.5);
 }
 /***************Portfolio*******************/
 
@@ -598,6 +774,65 @@ nav .fa-solid{
 
     .title2 {
         font-size: 10px;
+    }
+
+    #services {
+        padding: 40px 0;
+    }
+
+    .services-list div {
+        padding: 20px;
+    }
+
+    .services-list div i {
+        font-size: 36px;
+        margin-bottom: 12px;
+    }
+
+    .services-list div h2 {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .services-list div p {
+        font-size: 12px;
+        margin-bottom: 12px;
+    }
+
+    .services-list div a {
+        font-size: 11px;
+        margin-top: 12px;
+    }
+
+    /* Modal Responsive */
+    .modal-content {
+        width: 90%;
+        margin: 20% auto;
+        padding: 25px;
+        max-height: 75vh;
+    }
+
+    .close {
+        right: 15px;
+        top: 15px;
+        font-size: 24px;
+        width: 35px;
+        height: 35px;
+    }
+
+    #modalBulletPoints h2 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+
+    #modalBulletPoints li {
+        font-size: 14px;
+        margin: 14px 0;
+        padding-left: 24px;
+    }
+
+    #modalBulletPoints li::before {
+        top: 5px;
     }
 
     .about-col-1, .about-col-2 {

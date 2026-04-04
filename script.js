@@ -54,6 +54,7 @@ var tablinks = document.getElementsByClassName("tab-links")
     'genai-nlp': [
         "Conversational AI & Chatbot Development: Creating intelligent assistants and virtual agents.",
         "LLM Fine-Tuning & Deployment: Customizing and deploying Large Language Models (LLMs).",
+        "Building Scalable Production-Grade Agents: Developing robust agentic systems with advanced orchestration, memory management, and error handling for enterprise-scale deployments.",
         "Text Summarization & Sentiment Analysis: Extracting insights from textual data.",
         "Document Automation & RFP/Bid Automation: AI-powered proposal generation & document processing."
     ],
