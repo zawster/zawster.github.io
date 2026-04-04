@@ -107,6 +107,7 @@ var tablinks = document.getElementsByClassName("tab-links")
     if (e.target == modal) modal.style.display = 'none';
     }
 
+
     // Project Dialog Handling
     // A single overlay is appended to <body> (outside #portfolio) to avoid
     // content-visibility:auto creating a paint-containment context that breaks
@@ -150,6 +151,14 @@ var tablinks = document.getElementsByClassName("tab-links")
             }
         });
     });
+
+// Clear contact form on every page visit (including back-forward navigation)
+window.addEventListener('pageshow', function() {
+    var contactForm = document.querySelector('form[action="https://formspree.io/f/mkoppgjp"]');
+    if (contactForm) {
+        contactForm.reset();
+    }
+});
 
 // Copy to Clipboard Function for PyPI Package Section
 function copyToClipboard(text, button) {
