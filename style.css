@@ -1031,6 +1031,10 @@ nav .fa-solid{
     font-size: 13px;
 }
 
+.package-install {
+    position: relative;
+}
+
 .copy-btn {
     background: rgba(255, 0, 79, 0.15);
     border: 1px solid rgba(255, 0, 79, 0.3);
@@ -1047,6 +1051,30 @@ nav .fa-solid{
     background: rgba(255, 0, 79, 0.25);
     border-color: rgba(255, 0, 79, 0.5);
     transform: scale(1.05);
+}
+
+.copy-feedback {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 107, 157, 0.2);
+    border: 1px solid rgba(255, 107, 157, 0.4);
+    color: #ff6b9d;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.copy-feedback.show {
+    opacity: 1;
+    visibility: visible;
+    right: 45px;
 }
 
 .package-links {
@@ -1166,5 +1194,15 @@ nav .fa-solid{
 
     .package-icon i {
         font-size: 60px;
+    }
+
+    .copy-feedback {
+        right: 35px;
+        font-size: 11px;
+        padding: 5px 10px;
+    }
+
+    .copy-feedback.show {
+        right: 40px;
     }
 }
