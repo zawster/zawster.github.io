@@ -673,3 +673,266 @@ nav .fa-solid{
     color: #ababab;
     margin-top: 20px;
 }
+
+/* Featured PyPI Package Section */
+#featured-pypi {
+    padding: 50px 0;
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+
+.featured-package {
+    background: linear-gradient(135deg, #0f1419 0%, #151b27 50%, #0f1419 100%);
+    border: 1px solid #2a3a4a;
+    border-radius: 12px;
+    padding: 50px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.featured-package::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at top right, rgba(255, 0, 79, 0.08), transparent);
+    pointer-events: none;
+}
+
+.package-badge {
+    display: inline-block;
+    margin-bottom: 25px;
+}
+
+.new-badge {
+    background: rgba(255, 0, 79, 0.15);
+    color: #ff6b9d;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 0, 79, 0.3);
+    letter-spacing: 0.5px;
+}
+
+.package-content {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.package-title {
+    font-size: 36px;
+    color: #ffffff;
+    margin-bottom: 8px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.finasys-logo {
+    height: 40px;
+    width: 40px;
+    object-fit: contain;
+    display: block;
+}
+
+.package-tagline {
+    font-size: 16px;
+    color: #9ca3af;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.package-desc {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #b4b9c4;
+    margin-bottom: 25px;
+}
+
+.package-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #cbd5e1;
+    font-weight: 500;
+}
+
+.feature i {
+    color: #ff6b9d;
+    font-size: 15px;
+}
+
+.package-install {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(15, 20, 25, 0.8);
+    border: 1px solid #2a3a4a;
+    border-radius: 8px;
+    padding: 12px 15px;
+    margin-bottom: 25px;
+    font-family: 'Courier New', monospace;
+}
+
+.package-install code {
+    flex: 1;
+    color: #ff6b9d;
+    font-size: 13px;
+}
+
+.copy-btn {
+    background: rgba(255, 0, 79, 0.15);
+    border: 1px solid rgba(255, 0, 79, 0.3);
+    color: #ff6b9d;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.copy-btn:hover {
+    background: rgba(255, 0, 79, 0.25);
+    border-color: rgba(255, 0, 79, 0.5);
+    transform: scale(1.05);
+}
+
+.package-links {
+    display: flex;
+    gap: 12px;
+}
+
+.link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 18px;
+    background: rgba(255, 0, 79, 0.12);
+    color: #ff6b9d;
+    text-decoration: none;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.3s;
+    border: 1px solid rgba(255, 0, 79, 0.25);
+}
+
+.link-btn:hover {
+    background: rgba(255, 0, 79, 0.2);
+    border-color: rgba(255, 0, 79, 0.4);
+    transform: translateY(-2px);
+}
+
+.package-stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 25px;
+}
+
+.stat {
+    text-align: center;
+    padding: 18px;
+    background: rgba(255, 0, 79, 0.06);
+    border-radius: 8px;
+    border-left: 2px solid rgba(255, 0, 79, 0.25);
+    transition: all 0.3s ease;
+}
+
+.stat:hover {
+    background: rgba(255, 0, 79, 0.1);
+    border-left-color: rgba(255, 0, 79, 0.4);
+}
+
+.stat-number {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ff6b9d;
+    margin-bottom: 6px;
+}
+
+.stat-label {
+    font-size: 11px;
+    color: #8b92a2;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+.package-icon {
+    text-align: center;
+}
+
+.package-icon i {
+    font-size: 80px;
+    color: #ff6b9d;
+    opacity: 0.12;
+}
+
+/* Responsive - Featured Package */
+@media screen and (max-width: 768px) {
+    #featured-pypi {
+        padding: 40px 0;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    .featured-package {
+        padding: 30px;
+    }
+
+    .package-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .package-title {
+        font-size: 28px;
+    }
+
+    .finasys-logo {
+        height: 32px;
+        width: 32px;
+    }
+
+    .package-tagline {
+        font-size: 14px;
+    }
+
+    .package-features {
+        grid-template-columns: 1fr;
+    }
+
+    .package-links {
+        flex-wrap: wrap;
+    }
+
+    .link-btn {
+        flex: 1;
+        justify-content: center;
+    }
+
+    .package-icon i {
+        font-size: 60px;
+    }
+}
