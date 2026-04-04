@@ -149,3 +149,12 @@ var tablinks = document.getElementsByClassName("tab-links")
             }
         });
     });
+
+// Copy to Clipboard Function for PyPI Package Section
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        alert('Copied to clipboard!');
+    }).catch(err => {
+        console.error('Failed to copy:', err);
+    });
+}
