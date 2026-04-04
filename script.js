@@ -152,9 +152,20 @@ var tablinks = document.getElementsByClassName("tab-links")
     });
 
 // Copy to Clipboard Function for PyPI Package Section
-function copyToClipboard(text) {
+function copyToClipboard(text, button) {
     navigator.clipboard.writeText(text).then(() => {
-        alert('Copied to clipboard!');
+        // Show feedback message
+        const feedback = button.nextElementSibling;
+        if (feedback && feedback.classList.contains('copy-feedback')) {
+            feedback.textContent = 'Copied!';
+            feedback.classList.add('show');
+
+            // Hide after 2 seconds
+            setTimeout(() => {
+                feedback.classList.remove('show');
+                feedback.textContent = '';
+            }, 2000);
+        }
     }).catch(err => {
         console.error('Failed to copy:', err);
     });
