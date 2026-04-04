@@ -491,13 +491,18 @@
 
             </div>
             <div class="contact-right">
-                <form name = "submit-to-google-sheet">
-                    <input type="text" name="Name" placeholder="Your Name" required>
-                    <input type="emaail" name="Email" placeholder="Your Email" required>
-                    <textarea name="Message" row ="6" placeholder="Your message"></textarea>
-                    <button type="submit" class="btn btn2">Submit</button>
+                <form action="https://formspree.io/f/mkoppgjp" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="6" placeholder="Your message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn2">Send Message</button>
                 </form>
-                <span id = 'msg'> </span>
             </div>
 
 
@@ -529,22 +534,6 @@
 
 </script>
 
-<script>
-    
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwGLxvl3HODxT5HjPtu0l2Pu7FYiBZoBk0kVt2N0i09YP7O7yXRa_GLhi4kNSGY-N9m_w/exec'
-    const form = document.forms['submit-to-google-sheet']
-    const msg = document.getElementById("msg")
-
-    form.addEventListener('submit', e => {
-      e.preventDefault()
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => {
-        msg.innerHTML = "Message sent Succcessfully"
-        setTimeout(function() {msg.innerHTML = ""}, 5000)
-        form.rest() })
-        .catch(error => console.error('Error!', error.message))
-    })
-  </script>
 
 
 </body>
